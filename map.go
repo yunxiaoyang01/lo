@@ -221,12 +221,3 @@ func MapToSlice[K comparable, V any, R any](in map[K]V, iteratee func(key K, val
 
 	return result
 }
-
-// GroupByAndCount transforms a map into a map based on specific iteratee
-func GroupByAndCount[T any, K comparable](collection []T, iteratee func(item T) K) map[K]int {
-	result := make(map[K]int, len(collection))
-	for _, v := range collection {
-		result[iteratee(v)]++
-	}
-	return result
-}
