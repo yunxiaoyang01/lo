@@ -539,7 +539,6 @@ func Replace[T comparable](collection []T, old T, new T, n int) []T {
 			n--
 		}
 	}
-
 	return result
 }
 
@@ -589,4 +588,13 @@ func IsSortedByKey[T any, K constraints.Ordered](collection []T, iteratee func(i
 	}
 
 	return true
+}
+
+// 提取结构体数组中结构体的属性组合成一个新的数组
+func ToSlice[T, U any](arr []T, f func(T) U) []U {
+	result := make([]U, len(arr))
+	for i, v := range arr {
+		result[i] = f(v)
+	}
+	return result
 }
